@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import User from "./User";
 import Funds from "./Funds";
 import MyFunds from "./Funds";
+import Transaction from "./Transactions";
 
 
 function TabPanel(props) {
@@ -77,7 +78,7 @@ export default function Main({userData, balance, setBalance}) {
         <Funds userData={userData} balance={balance} setBalance={setBalance}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <Transaction userId={userData.id} />
       </TabPanel>
     </Box>
   );

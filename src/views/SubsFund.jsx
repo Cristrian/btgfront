@@ -19,7 +19,7 @@ function FundTable({rows, userId, balance}) {
     setOpen(false);
   };
   const [amount, setAmount] = useState(0);
-  const handleSubscribe = function (event, rowPosition, useId, fundId) {
+  const handleSubscribe = function (event, min, useId, fundId) {
     event.preventDefault();
     console.log(balance)
     console.log(amount)
@@ -27,6 +27,8 @@ function FundTable({rows, userId, balance}) {
       alert("Su balance es insuficiente para suscribirse con esta cantidad");
     } else if (amount == 0) {
       console.log(0);
+    } else if (amount < min) {
+      alert("La cantidad es menor al minimo de inversión");
     } else if (amount < 0) {
       alert("No puede ingresar números negativos");
     } else {
@@ -102,7 +104,7 @@ function FundTable({rows, userId, balance}) {
                     </DialogContent>
                     <DialogActions>
                       <Button onClick={handleClose}>Cancelar</Button>
-                      <Button onClick={(event) => handleSubscribe(event, index, userId, row.id)}>
+                      <Button onClick={(event) => handleSubscribe(event, row.minimun, userId, row.id)}>
                         Suscribirme
                       </Button>
                     </DialogActions>
